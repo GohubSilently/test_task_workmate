@@ -21,7 +21,7 @@ def configure_parser(available_report_funtion):
         "-r",
         choices=available_report_funtion,
         required=True,
-        help="Название ht;bvf",
+        help="Название режима",
     )
     return parser
 
