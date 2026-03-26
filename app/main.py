@@ -2,7 +2,7 @@ import logging
 
 from config import configure_logging, configure_parser
 from constants import COMMAND_LINE_ARGUMENTS, END_HANDLER, ERROR_PARSER, START_HANDLER
-from reader import read_csv
+from read import read_csv
 from report_functions import median_report
 from output import output_data
 
@@ -25,6 +25,10 @@ def main():
             output_data(result, args.report)
     except FileNotFoundError as error:
         logging.error(f"Файл не найден: {error}")
+    except KeyError as error:
+        logging.error(f"В файле нет таких данных {error}")
+    except ValueError as error:
+        logging.error(f"В файле указаны неправильные данные {error}")
     except Exception as error:
         logging.info(ERROR_PARSER.format(report=args.report, error=error))
 
